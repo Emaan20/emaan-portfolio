@@ -33,7 +33,7 @@ function HeroVisual() {
       transition={{ duration: 0.7, delay: 0.2 }}
       className="relative mx-auto w-full max-w-[35rem] lg:justify-self-end"
     >
-    <div className="hero-showcase-card relative min-h-[520px] overflow-visible rounded-[2.5rem] p-0 sm:min-h-[620px]">
+      <div className="hero-showcase-card relative min-h-[520px] overflow-visible rounded-[2.5rem] p-0 sm:min-h-[620px]">
         <div aria-hidden className="absolute inset-8 rounded-full bg-electric/5 blur-3xl" />
 
         <div className="hero-globe-stage" aria-hidden="true">
@@ -116,8 +116,20 @@ export default function Hero() {
             <span className="text-sm text-slate-300">{profile.availability}</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="text-balance text-5xl font-semibold tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
-            Hi, I&apos;m {profile.name}. I build <span className="text-gradient">premium web and mobile apps.</span>
+          <motion.h1
+            variants={fadeUp}
+            className="text-balance text-5xl font-semibold tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+          >
+            <span className="block">Hi,</span>
+            <span className="block whitespace-nowrap text-[clamp(3rem,12vw,8rem)] sm:text-6xl lg:text-7xl xl:text-8xl">
+              I&apos;m {profile.name}.
+            </span>
+            <span className="block">
+              I build{" "}
+              <span className="text-gradient">
+                web and mobile apps.
+              </span>
+            </span>
           </motion.h1>
 
           <motion.div variants={fadeUp} className="mt-6 min-h-10 text-xl font-medium text-slate-300 sm:text-2xl">
