@@ -1,0 +1,344 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-ink: #08030f;
+  --color-panel: #130821;
+  --color-muted: #a7a3b8;
+  --color-electric: #ff4ecd;
+  --color-violet: #8b5cf6;
+}
+
+:root {
+  color-scheme: dark;
+  background: #08030f;
+  font-family: var(--font-sans);
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+  --accent-rgb: 255 78 205;
+  --accent-2-rgb: 139 92 246;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #08030f;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgb(var(--accent-rgb) / 0.1), transparent 28rem),
+    radial-gradient(circle at 85% 15%, rgb(var(--accent-2-rgb) / 0.24), transparent 28rem),
+    radial-gradient(circle at 12% 28%, rgb(var(--accent-rgb) / 0.14), transparent 25rem),
+    #08030f;
+  color: #f8fafc;
+}
+
+::selection {
+  background: rgb(var(--accent-rgb) / 0.35);
+  color: white;
+}
+
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgb(var(--accent-rgb) / 0.9);
+  outline-offset: 4px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(22px);
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.88), rgb(var(--accent-2-rgb) / 0.76), rgba(255, 255, 255, 0.18));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #ffffff, #ffc7ef 45%, #b8a2ff 78%, #ff4ecd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 0%, black, transparent 72%);
+}
+
+.project-mask {
+  mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+}
+
+section[id] {
+  scroll-margin-top: 7.5rem;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.glass-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--accent-rgb) / 0.45) transparent;
+}
+
+.glass-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.glass-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.glass-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(rgb(var(--accent-rgb) / 0.55), rgb(var(--accent-2-rgb) / 0.45));
+}
+
+.hero-showcase-card {
+  contain: layout paint;
+  isolation: isolate;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.hero-globe-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(112%, 40rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+}
+
+.hero-globe-halo {
+  position: absolute;
+  inset: 6%;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 42% 35%, rgb(var(--accent-rgb) / 0.32), transparent 24%),
+    radial-gradient(circle at 70% 67%, rgb(var(--accent-2-rgb) / 0.26), transparent 36%);
+  filter: blur(10px);
+  opacity: 0.95;
+  animation: heroGlowPulse 7s ease-in-out infinite;
+}
+
+.hero-wire-globe {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 22px rgb(var(--accent-rgb) / 0.24));
+  animation: heroGlobeFloat 9s ease-in-out infinite;
+}
+
+.hero-orbit-ring {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 82%;
+  height: 46%;
+  border: 1px solid rgb(var(--accent-rgb) / 0.25);
+  border-radius: 9999px;
+  transform: translate(-50%, -50%) rotate(-19deg);
+}
+
+.hero-orbit-ring-one {
+  animation: heroRingOne 15s linear infinite;
+}
+
+.hero-orbit-ring-two {
+  width: 74%;
+  height: 38%;
+  border-color: rgb(var(--accent-2-rgb) / 0.32);
+  transform: translate(-50%, -50%) rotate(58deg);
+  animation: heroRingTwo 18s linear infinite;
+}
+
+.hero-tech-chip {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  width: 3.15rem;
+  height: 3.15rem;
+  transform: translate(-50%, -50%);
+  place-items: center;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.hero-tech-chip:hover {
+  transform: translate(-50%, -50%) translateY(-5px) scale(1.04);
+  border-color: rgb(var(--accent-rgb) / 0.65);
+  background: rgb(var(--accent-rgb) / 0.18);
+}
+
+@keyframes heroGlowPulse {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes heroGlobeFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(1deg);
+  }
+}
+
+@keyframes heroRingOne {
+  from {
+    transform: translate(-50%, -50%) rotate(-19deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(341deg);
+  }
+}
+
+@keyframes heroRingTwo {
+  from {
+    transform: translate(-50%, -50%) rotate(58deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-302deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-tech-chip {
+    width: 2.65rem;
+    height: 2.65rem;
+    border-radius: 0.85rem;
+  }
+
+  .hero-globe-stage {
+    top: 50%;
+    width: 105%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-wire-globe,
+  .hero-globe-halo,
+  .hero-orbit-ring-one,
+  .hero-orbit-ring-two {
+    animation: none;
+  }
+}
+.section-heading,
+.skill-card,
+.project-card,
+.service-card,
+.experience-card,
+.education-card,
+.achievement-card,
+.testimonial-card,
+.certification-card,
+[data-scroll-reveal],
+[data-stagger-item] {
+  will-change: transform, opacity, filter;
+}
+
+[data-scroll-reveal],
+[data-stagger-item] {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-heading,
+  .skill-card,
+  .project-card,
+  .service-card,
+  .experience-card,
+  .education-card,
+  .achievement-card,
+  .testimonial-card,
+  .certification-card,
+  [data-scroll-reveal],
+  [data-stagger-item] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+body.modal-open {
+  overflow: hidden !important;
+  overscroll-behavior: none;
+}
+
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
