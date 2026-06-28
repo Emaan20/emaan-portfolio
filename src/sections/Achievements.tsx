@@ -10,8 +10,8 @@ export default function Achievements() {
       <Container>
         <SectionHeading
           eyebrow="Achievements"
-          title="Numbers that tell a simple story of growth."
-          description="Statistic cards are animated, concise, and grounded in the CV projects and education details."
+          title="Milestones that reflect my growth."
+          description="A snapshot of my projects, technologies, and recognition as I continue growing as a software engineer."
         />
 
         <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
